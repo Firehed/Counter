@@ -24,12 +24,12 @@ class counter {
 		$mod = self::$i % self::LINE;
 		!$mod && self::$i && print "\n"; // syntactic sugar to say it's after hitting the line break but not 0
 
-		echo str_repeat("\010", self::$extra + self::LINE-$mod); // prev run spaces + $extra: ' XXXX/XXXX'
+		echo str_repeat("\010", self::$extra + self::LINE-$mod); // backspace over prev run spaces + $extra: ' XXXX/XXXX'
 		echo $chr;
 		self::$i++;
 
-		echo str_repeat(' ', self::LINE - $mod - 1); // spaces for r
-		echo sprintf(' %0'.self::$cw.'d/%0'.self::$cw.'d', self::$i, self::$count);
+		echo str_repeat(' ', self::LINE - $mod); // spaces after output to numeric counter (incl. space between output and numbers)
+		echo sprintf('%0'.self::$cw.'d/%0'.self::$cw.'d', self::$i, self::$count);
 	}
 
 }
